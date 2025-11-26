@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Activités - ETETI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .activities-section {
+            padding: 120px 1rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .activities-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/activities-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 100px 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 1200px) {
+            .service-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .projects-section {
+            background-color: var(--light-gray);
+            padding: 4rem 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-section {
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .expertise-item {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .expertise-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">ETETI</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="societe.html">Société</a></li>
+                <li><a href="activites.html" class="active">Activités</a></li>
+                <li><a href="carriere.html">Carrière</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider">
+                    <i class="fas fa-sun slider-icon sun"></i>
+                    <i class="fas fa-moon slider-icon moon"></i>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <div class="activities-hero" data-aos="fade-up">
+            <h1>Nos Activités</h1>
+            <p>Chez ETETI, nous nous concentrons principalement sur quatre secteurs d'activités</p>
+        </div>
+
+        <section class="activities-section">
+            <div class="service-details">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-image">
+                        <img src="images/reseau.png" alt="Réseau Télécom">
+                    </div>
+                    <div class="service-content">
+                        <h3>Réseau Télécom</h3>
+                        <p>Expertise complète dans le déploiement et la maintenance des infrastructures de télécommunications, garantissant une connectivité optimale et fiable.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Déploiement fibre optique (D1, D2, D3)</li>
+                            <li><i class="fas fa-check"></i>Raccordement</li>
+                            <li><i class="fas fa-check"></i>Mesure réflectométrique</li>
+                            <li><i class="fas fa-check"></i>Audit PI1 et NRA</li>
+                            <li><i class="fas fa-check"></i>Audit réseau télécom</li>
+                            <li><i class="fas fa-check"></i>Maintenance FO/CU</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-image">
+                        <img src="images/it.png" alt="Informatique (IT)">
+                    </div>
+                    <div class="service-content">
+                        <h3>Informatique (IT)</h3>
+                        <p>Solutions informatiques complètes pour répondre aux besoins technologiques modernes des entreprises, de l'infrastructure réseau au support technique.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Déploiement de solution wifi</li>
+                            <li><i class="fas fa-check"></i>Réseau informatique</li>
+                            <li><i class="fas fa-check"></i>Développement web</li>
+                            <li><i class="fas fa-check"></i>Maintenance des imprimantes (HP, XEROX)</li>
+                            <li><i class="fas fa-check"></i>Déploiement et maintenance des objets connectés</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-image">
+                        <img src="images/electricite.png" alt="Électricité">
+                    </div>
+                    <div class="service-content">
+                        <h3>Électricité</h3>
+                        <p>Services électriques professionnels pour assurer la sécurité et l'efficacité de vos installations électriques.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Déploiement et maintenance en besoin électrique</li>
+                            <li><i class="fas fa-check"></i>Raccordement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-image">
+                        <img src="images/iot.png" alt="IOT">
+                    </div>
+                    <div class="service-content">
+                        <h3>IOT</h3>
+                        <p>Solutions innovantes d'objets connectés pour automatiser et optimiser votre environnement domestique et professionnel.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i>Domotique et objets domestiques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <h2 class="text-center" data-aos="fade-up">Nos Projets Récents</h2>
+            <div class="project-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="images/project-1.jpg" alt="Projet 1">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Développement Web</span>
+                            <span>2024</span>
+                        </div>
+                        <h3>Plateforme E-commerce</h3>
+                        <p>Développement d'une plateforme e-commerce complète avec système de paiement intégré</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="images/project-2.jpg" alt="Projet 2">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Infrastructure Cloud</span>
+                            <span>2024</span>
+                        </div>
+                        <h3>Migration Cloud</h3>
+                        <p>Migration complète de l'infrastructure vers le cloud pour une entreprise internationale</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="images/project-3.jpg" alt="Projet 3">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Application Mobile</span>
+                            <span>2025</span>
+                        </div>
+                        <h3>App IoT</h3>
+                        <p>Développement d'une application mobile de contrôle pour objets connectés</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="expertise-section">
+            <h2 data-aos="fade-up">Notre Expertise Technique</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item" data-aos="fade-up">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement</h3>
+                    <p>Java, Python, JavaScript</p>
+                </div>
+                <div class="expertise-item" data-aos="fade-up">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile</h3>
+                    <p>iOS, Android, React Native</p>
+                </div>
+                <div class="expertise-item" data-aos="fade-up">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud</h3>
+                    <p>AWS, Azure, Google Cloud</p>
+                </div>
+                <div class="expertise-item" data-aos="fade-up">
+                    <i class="fas fa-database"></i>
+                    <h3>Base de données</h3>
+                    <p>SQL, NoSQL, Big Data</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 data-aos="fade-up">Prêt à Démarrer Votre Projet ?</h2>
+                <p data-aos="fade-up">Contactez-nous pour discuter de vos besoins et obtenir un devis personnalisé</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button">Contactez-nous</a>
+                    <a href="carriere.html" class="cta-button secondary">En savoir plus</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ETETI</h3>
+                <p>118 AVENUE JEAN JAURES<br>75019 PARIS</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="societe.html">Société</a></li>
+                    <li><a href="activites.html">Activités</a></li>
+                    <li><a href="carriere.html">Carrière</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ETETI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

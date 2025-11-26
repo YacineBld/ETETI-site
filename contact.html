@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ETETI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .contact-section {
+            padding: 120px 1rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">ETETI</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="societe.html">Société</a></li>
+                <li><a href="activites.html">Activités</a></li>
+                <li><a href="carriere.html">Carrière</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider">
+                    <i class="fas fa-sun slider-icon sun"></i>
+                    <i class="fas fa-moon slider-icon moon"></i>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h1 data-aos="fade-up">Contactez-nous</h1>
+            <p data-aos="fade-up">Nous sommes à votre écoute pour répondre à vos questions et vous accompagner dans vos projets.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-form" data-aos="fade-right">
+                    <h2>Envoyez-nous un message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Envoyer</button>
+                    </form>
+                </div>
+
+                <div class="contact-info" data-aos="fade-left">
+                    <h2>Informations de contact</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> 118 AVENUE JEAN JAURES, 75019 PARIS</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope"></i> contact@eteti.fr</p>
+                    <p><i class="fas fa-clock"></i> Lundi - Vendredi : 9h00 - 18h00</p>
+                    <div class="map-container" style="height: 300px; margin-top: 20px; border-radius: 10px; overflow: hidden;">
+                        <iframe width="100%" 
+                                height="100%" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                marginheight="0" 
+                                marginwidth="0" 
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=2.3741144,48.8808099,2.3781144,48.8848099&amp;layer=mapnik&amp;marker=48.8828099,2.3761144">
+                        </iframe>
+                        <small style="display: block; margin-top: 5px;">
+                            <a href="https://www.openstreetmap.org/?mlat=48.8828099&amp;mlon=2.3761144#map=18/48.8828099/2.3761144" 
+                               target="_blank"
+                               style="color: #fff;">
+                                Voir en plein écran
+                            </a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ETETI</h3>
+                <p>118 AVENUE JEAN JAURES<br>75019 PARIS</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="societe.html">Société</a></li>
+                    <li><a href="activites.html">Activités</a></li>
+                    <li><a href="carriere.html">Carrière</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ETETI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Merci pour votre message. Nous vous contacterons bientôt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

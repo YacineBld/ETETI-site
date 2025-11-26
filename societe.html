@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Société - ETETI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .company-section {
+            padding: 120px 1rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/company-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 100px 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .history-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: auto;
+            right: -10px;
+        }
+
+        .values-section {
+            background-color: var(--light-gray);
+            padding: 4rem 1rem;
+            margin: 3rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .team-section {
+            padding: 4rem 1rem;
+            background-color: var(--background-color);
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .team-member {
+            background-color: var(--dark-gray);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .team-member .position {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .team-description {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .member-social a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .member-social a:hover {
+            color: var(--secondary-color);
+        }
+
+        .stats-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+        }
+
+        .stat-item .growth {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            color: #4dff4d;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">ETETI</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="societe.html" class="active">Société</a></li>
+                <li><a href="activites.html">Activités</a></li>
+                <li><a href="carriere.html">Carrière</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider">
+                    <i class="fas fa-sun slider-icon sun"></i>
+                    <i class="fas fa-moon slider-icon moon"></i>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <div class="company-hero" data-aos="fade-up">
+            <h1>Notre Société</h1>
+            <p>Découvrez l'histoire et les valeurs qui font d'ETETI un leader des technologies de l'information</p>
+        </div>
+
+        <section class="company-section">
+            <h2 data-aos="fade-up">Notre Histoire</h2>
+            <div class="history-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <h3>2023</h3>
+                    <p>Création d'ETETI avec une vision claire : devenir un acteur majeur des technologies de l'information</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>2024</h3>
+                    <p>Expansion de nos services et croissance rapide de notre équipe</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <h3>2025</h3>
+                    <p>Développement de solutions innovantes et partenariats stratégiques</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2 class="text-center" data-aos="fade-up">Nos Valeurs</h2>
+            <br>
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Confiance</h3>
+                    <p>Construire des relations durables basées sur la confiance et la transparence</p>
+                </div>
+                <div class="value-card" data-aos="fade-up">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Rester à la pointe de la technologie pour offrir les meilleures solutions</p>
+                </div>
+                <div class="value-card" data-aos="fade-up">
+                    <i class="fas fa-users"></i>
+                    <h3>Collaboration</h3>
+                    <p>Travailler ensemble pour atteindre l'excellence</p>
+                </div>
+                <div class="value-card" data-aos="fade-up">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Intégrité</h3>
+                    <p>Agir avec éthique et responsabilité dans toutes nos actions</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section" data-aos="fade-up">
+            <h2>Notre équipe de direction</h2>
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up">
+                    <img src="images/bachir-bessaou.jpg" alt="Bachir Bessaou">
+                    <h3>Bachir Bessaou</h3>
+                    <p class="position">Président</p>
+                    <div class="member-social">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/mekhmoukh-kousseila.jpg" alt="Mekhmoukh Kousseila">
+                    <h3>Mekhmoukh Kousseila</h3>
+                    <p class="position">Ingénieur en informatique & télécommunication</p>
+                    <div class="member-social">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/team-technicians.jpg" alt="Équipe technique">
+                    <h3>Équipe technique</h3>
+                    <p class="position">Techniciens sur le terrain</p>
+                    <p class="team-description">Une équipe qualifiée de techniciens assurant l'excellence de nos services sur le terrain.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section" data-aos="fade-up">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="zoom-in">
+                    <i class="fas fa-tools"></i>
+                    <h3>1000+</h3>
+                    <p>Interventions réalisées</p>
+                </div>
+                <div class="stat-item" data-aos="zoom-in">
+                    <i class="fas fa-users"></i>
+                    <h3>7-10</h3>
+                    <p>Salariés qualifiés</p>
+                </div>
+                <div class="stat-item" data-aos="zoom-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>349K€</h3>
+                    <p>Chiffre d'affaires 2023<br><span class="growth">(+1178% vs 2022)</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ETETI</h3>
+                <p>118 AVENUE JEAN JAURES<br>75019 PARIS</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="societe.html">Société</a></li>
+                    <li><a href="activites.html">Activités</a></li>
+                    <li><a href="carriere.html">Carrière</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ETETI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
